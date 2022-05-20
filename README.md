@@ -14,9 +14,11 @@ The Interactive Rubik's Cube contains the following features:
 To run the application, an installation of Pygame and OpenGL is required.
 
 Running the following command should successfully run the application:
-'''
+
+```
 python rubiks_cube.py
-'''
+```
+
 The user can interact with the Rubik's Cube using certain keys on the keyboard:
 
 - arrow keys are used to pan around the Rubik's Cube
@@ -32,10 +34,18 @@ The user can interact with the Rubik's Cube using certain keys on the keyboard:
 ## TODO:
 
 - Add an optimiser that can remove unnecessary moves printed by the solver function (E.g. change L L L to Li)
+- Find a way to implement wide moves and whole cube rotations in just 1 move
 - Provide a more robust way of accessing the cubies (potentially a dictionary with the position as the keys)
 - Look into a path-searching algorithm to improve upon the solver. The solver is currently complete, but it is far from optimal
 
 ## References and Acknowledgements:
 
+The following websites were especially helpful for suggestions on the 3D modelling, the animations and the implementation of the solver:
 
-
+- https://stackoverflow.com/questions/50303616/how-to-rotate-slices-of-a-rubiks-cube-in-python-pyopengl
+- https://stackoverflow.com/questions/56712877/how-do-i-render-a-matrix-as-a-cube-in-opengl?noredirect=1&lq=1
+- https://github.com/pglass/cube/tree/master
+- https://softwareengineering.stackexchange.com/questions/142760/how-to-represent-a-rubiks-cube-in-a-data-structure/262847#262847
+- https://jperm.net/3x3/moves
+- https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf
+- http://badmephisto.com/oll.html
