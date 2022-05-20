@@ -30,6 +30,49 @@ The user can interact with the Rubik's Cube using certain keys on the keyboard:
 
 ## Implementation:
 
+### cubie
+
+Each cubie is a representation of one of the small 27 cubes that make up the overall Rubik's Cube. They store information such as its current position list `[x, y, z]`, the orientation of its colours `[colour_x, colour_y, colour_z]`, its rotation matrix and its transformation matrix.
+
+When a cubie is rotated, its position, colour orientation and matrices are all updated. A rotation around a certain axis will only affect the values that are not in that axis. For example, if a cubie was rotated around the x-axis, only the colours that are not in the x-axis will be swapped:
+
+```
+[colour_x, colour_y, colour_z] -> [colour_x, colour_z, colour_y]
+```
+
+The same logic is applied to the position list and the matrices, but with slight variations due to the 3D modelling.
+
+The generate_model() method is responsible for creating the edges for the cubie and applying the colours. The cubie's transformation matrix is then used to model any animations when it is being rotated.
+
+### rubiks_cube
+
+The rubiks_cube class stores a list of the 27 cubies. The class is responsible for interacting with the user by accepting certain key presses.
+
+When a rotation is performed, the rubiks_cube updates all of its cubies by checking which ones are affected by the rotation. If so, all the cubie information is updated within the cubie class, not the rubiks_cube.
+
+The rubiks_cube also maintains a stack for undoing and redoing moves as well as a solver() class in order to move the solving logic out of the cube.
+
+### solver
+
+The solver is implemented using a combination of the 7 step beginner's method and the Fridrich method. The steps to solve the cube are:
+
+1. Bottom cross
+2. Bottom corners
+3. Second layer edges
+4. Top cross
+5. Top corners
+6. Permute third layer corners
+7. Permute third layer edges
+
+The Fridrich method is applied to steps 4 and 5 to reduce the number of moves for the solver. All the moves printed by the solver will solve the cube if performed from the perspective of the front face.
+
+Links used for the solver:
+
+The 7 step beginner's method
+- https://assets.ctfassets.net/r3qu44etwf9a/6kAQCoLmbXXu29TTuArrk1/404118e1f9bfb6f9997157a284bbc572/Rubiks_Solution-Guide_3x3.pdf
+
+The Fridrich method for OLL:
+- http://badmephisto.com/oll.html
 
 ## TODO:
 
